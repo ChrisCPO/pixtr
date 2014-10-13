@@ -1,0 +1,17 @@
+<h1> <%= @image.name %> </h1>
+
+<p> <%= @image.description %> </p>
+<div>
+  <%= link_to "back to gallery", gallery_path(@gallery) %>
+  <%= link_to "edit Image" , edit_gallery_image_path(@gallery,  @image)%>
+</div>
+<div>
+  <form action="/galleries/<%= @gallery.id %>/images/<%= @image.id %> " method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete this Image">
+  </form>
+  </div>
+<div>
+<%= image_tag @image.url, width: 1000 %>
+</div>
+

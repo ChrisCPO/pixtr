@@ -1,0 +1,25 @@
+<h1> <%= @gallery.name %> </h1>
+<p> <%= @gallery.description %> </p>
+<div> 
+  <%= image_tag @gallery.cover_image ,width:250 %>
+</div>
+<div>
+  <%= link_to "Index", "/galleries"%>
+</div>
+<div>
+  <%= link_to "Edit Gallery", edit_gallery_path(@gallery) %>
+  <%= link_to "add image", new_gallery_image_path(@gallery) %>
+</div>
+<br>
+<div>
+  <form action="/galleries/<%= @gallery.id %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete this gallery">
+</div>
+<div>
+  <% @gallery.images.each do |image| %>
+    <%= link_to [@gallery, image]  do %>
+      <ul><%= image_tag image.url ,width: 350 %></ul>
+    <% end %>
+  <% end %>
+</div>

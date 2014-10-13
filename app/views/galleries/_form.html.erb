@@ -1,0 +1,28 @@
+<%= form_for gallery do |form| %>
+
+  <% if gallery.errors.any? %>
+  <div>
+    <p> We could not save your <%= gallery.class.to_s %> </p>
+    <% gallery.errors.full_messages.each do |error_message| %> 
+        <li> <%= error_message %> </li>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <%= form.label :name %>
+  <%= form.text_field :name, placeholder: @gallery.name%>
+</div>
+
+<div>
+  <%= form.label :description %>
+  <%= form.text_area :description, placeholder: @gallery.description%>
+</div>
+
+<div>
+  <%= form.label :cover_image %>
+  <%= form.text_field :cover_image, placeholder: @gallery.cover_image %>
+</div>
+
+<%= form.submit "update gallery" %>
+<% end %>
