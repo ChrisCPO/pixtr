@@ -43,6 +43,7 @@ class ImagesController < ApplicationController
   def show
     @gallery = Gallery.find(params[:gallery_id])
     @image = Image.find(params[:id])
+    @comment = Comment.new
   end
 
   private

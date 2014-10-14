@@ -10,8 +10,20 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete this Image">
   </form>
-  </div>
-<div>
-<%= image_tag @image.url, width: 1000 %>
 </div>
+
+<div>
+<%= image_tag @image.url, width: 650 %>
+</div>
+
+<%= render "form_errors", object: @comment  %>
+
+<%= form_for [@image, @comment] do |f| %>
+  <%= f.label :content, "Comment" %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
+
+<%= render @image.comments.by_most_recent %>
+
 

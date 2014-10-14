@@ -1,14 +1,6 @@
 <%= form_for gallery do |form| %>
 
-  <% if gallery.errors.any? %>
-  <div>
-    <p> We could not save your <%= gallery.class.to_s %> </p>
-    <% gallery.errors.full_messages.each do |error_message| %> 
-        <li> <%= error_message %> </li>
-    <% end %>
-  <% end %>
-</div>
-
+  <%= render "form_errors", object: gallery %>
 <div>
   <%= form.label :name %>
   <%= form.text_field :name, placeholder: @gallery.name%>

@@ -1,0 +1,7 @@
+<div>
+  <p><%= comment.content %></p>
+  <p>--by <%= "#{comment.user.email}   #{time_ago_in_words(comment.created_at)}" %></p>
+  <% if current_user.email == comment.user.email %>
+    <p> delete me </p>
+  <% end %>
+</div>
